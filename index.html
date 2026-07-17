@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Raymond Collins — Agentic Business Solution Architect. Enterprise AI, Copilot and agentic workflow transformation.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ctext x='1' y='12' font-size='10'%3ERC%3C/text%3E%3C/svg%3E">
+  <title>Raymond Collins | Enterprise AI Architect</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.55;
+    }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; }
+    .shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+    .eyebrow {
+      color: var(--cp-accent); font-family: Consolas, "Courier New", Courier, monospace;
+      font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    }
+    .section { padding: 112px 0; }
+    .section-heading { max-width: 680px; margin-bottom: 44px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); letter-spacing: -.045em; line-height: 1.05; margin: 10px 0 18px; }
+    .lede { color: var(--cp-text-muted); font-size: 1.06rem; max-width: 620px; }
+
+    .site-header {
+      backdrop-filter: blur(18px); background: var(--cp-panel); border-bottom: 1px solid var(--cp-border);
+      position: sticky; top: 0; z-index: 20;
+    }
+    .nav { align-items: center; display: flex; height: 72px; justify-content: space-between; }
+    .brand { align-items: center; display: flex; font-weight: 750; gap: 10px; letter-spacing: -.02em; }
+    .brand-mark {
+      align-items: center; background: var(--cp-accent); color: var(--cp-accent-fg); display: inline-flex;
+      font-family: Consolas, "Courier New", Courier, monospace; font-size: .72rem; font-weight: 700;
+      height: 32px; justify-content: center; width: 32px;
+    }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-link { color: var(--cp-text-muted); font-size: .86rem; font-weight: 600; }
+    .nav-link:hover, .nav-link.active { color: var(--cp-accent); }
+    .nav-toggle { background: none; border: 0; color: var(--cp-text); display: none; padding: 8px; }
+
+    .hero { min-height: calc(100vh - 72px); overflow: hidden; padding: 104px 0 72px; position: relative; }
+    .hero::before {
+      border: 1px solid var(--cp-border); border-radius: 50%; content: ""; height: 620px; position: absolute;
+      right: -180px; top: -120px; width: 620px;
+    }
+    .hero-grid { align-items: end; display: grid; gap: 56px; grid-template-columns: minmax(0, 1.4fr) minmax(280px, .6fr); position: relative; }
+    .hero h1 { font-size: clamp(3.1rem, 7.2vw, 6.7rem); letter-spacing: -.07em; line-height: .91; margin: 17px 0 30px; max-width: 900px; }
+    .hero h1 .accent { color: var(--cp-accent); }
+    .hero-copy { color: var(--cp-text-muted); font-size: 1.1rem; max-width: 635px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button {
+      align-items: center; border: 1px solid transparent; display: inline-flex; font-size: .9rem; font-weight: 700;
+      gap: 9px; justify-content: center; padding: 13px 18px; transition: transform .2s, background .2s, border-color .2s;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--cp-accent); color: var(--cp-accent-fg); }
+    .button-primary:hover { background: var(--cp-accent-hover); }
+    .button-secondary { background: var(--cp-surface); border-color: var(--cp-border); color: var(--cp-text); }
+    .button-secondary:hover { border-color: var(--cp-border-strong); }
+    .signal-card { background: var(--cp-surface); border: 1px solid var(--cp-border); box-shadow: var(--cp-shadow); padding: 28px; }
+    .signal-card h2 { font-size: 1.15rem; letter-spacing: -.025em; margin: 10px 0 20px; }
+    .signal-row { border-top: 1px solid var(--cp-border); display: flex; gap: 14px; padding: 15px 0; }
+    .signal-icon { color: var(--cp-accent); flex: 0 0 auto; margin-top: 2px; }
+    .signal-row strong { display: block; font-size: .85rem; }
+    .signal-row span { color: var(--cp-text-muted); display: block; font-size: .77rem; margin-top: 2px; }
+    .availability { align-items: center; color: var(--cp-text-muted); display: flex; font-size: .82rem; gap: 8px; margin-top: 25px; }
+    .availability i { background: var(--cp-success); border-radius: 50%; height: 8px; width: 8px; }
+
+    .metrics { background: var(--cp-text); color: var(--cp-bg); padding: 0; }
+    .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .metric { border-right: 1px solid var(--cp-border-strong); padding: 38px 28px; }
+    .metric:last-child { border-right: 0; }
+    .metric-value { color: var(--cp-accent); font-size: clamp(2rem, 4vw, 3.3rem); font-weight: 750; letter-spacing: -.06em; line-height: 1; }
+    .metric-label { color: var(--cp-text-muted); font-size: .8rem; font-weight: 600; margin-top: 9px; }
+
+    .approach { background: var(--cp-bg-elevated); }
+    .approach-grid { display: grid; gap: 48px; grid-template-columns: .72fr 1.28fr; }
+    .principles { border-top: 1px solid var(--cp-border); }
+    .principle { align-items: start; border-bottom: 1px solid var(--cp-border); display: grid; gap: 18px; grid-template-columns: 50px 1fr; padding: 23px 0; }
+    .principle-num { color: var(--cp-accent); font-family: Consolas, "Courier New", Courier, monospace; font-size: .78rem; font-weight: 700; padding-top: 5px; }
+    .principle h3 { font-size: 1.08rem; margin-bottom: 4px; }
+    .principle p { color: var(--cp-text-muted); font-size: .91rem; margin-bottom: 0; }
+    .statement { align-self: center; border-left: 3px solid var(--cp-accent); padding: 22px 0 22px 30px; }
+    .statement p { font-size: clamp(1.4rem, 2.5vw, 2.1rem); font-weight: 600; letter-spacing: -.035em; line-height: 1.2; margin: 0; }
+
+    .capability-toolbar { align-items: center; border-bottom: 1px solid var(--cp-border); display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; margin-bottom: 26px; padding-bottom: 18px; }
+    .filter-set { display: flex; flex-wrap: wrap; gap: 7px; }
+    .filter {
+      background: transparent; border: 1px solid var(--cp-border); color: var(--cp-text-muted); font-size: .78rem;
+      font-weight: 650; padding: 8px 12px;
+    }
+    .filter:hover, .filter.selected { background: var(--cp-accent); border-color: var(--cp-accent); color: var(--cp-accent-fg); }
+    .result-count { color: var(--cp-text-soft); font-size: .78rem; }
+    .capability-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, 1fr); }
+    .capability-card { background: var(--cp-surface); border: 1px solid var(--cp-border); min-height: 185px; padding: 23px; transition: border-color .2s, transform .2s; }
+    .capability-card:hover { border-color: var(--cp-accent); transform: translateY(-3px); }
+    .capability-card[hidden] { display: none; }
+    .capability-card svg { color: var(--cp-accent); height: 25px; margin-bottom: 28px; width: 25px; }
+    .capability-card h3 { font-size: 1rem; margin-bottom: 7px; }
+    .capability-card p { color: var(--cp-text-muted); font-size: .82rem; margin-bottom: 0; }
+
+    .experience { background: var(--cp-surface-soft); }
+    .timeline { border-top: 1px solid var(--cp-border); }
+    .role { border-bottom: 1px solid var(--cp-border); }
+    .role-trigger {
+      align-items: center; background: transparent; border: 0; color: var(--cp-text); display: grid; gap: 20px;
+      grid-template-columns: 110px 1fr auto; padding: 25px 0; text-align: left; width: 100%;
+    }
+    .role-date { color: var(--cp-accent); font-family: Consolas, "Courier New", Courier, monospace; font-size: .76rem; font-weight: 700; }
+    .role-title { font-size: 1.08rem; font-weight: 700; letter-spacing: -.02em; }
+    .role-company { color: var(--cp-text-muted); display: block; font-size: .85rem; font-weight: 500; margin-top: 3px; }
+    .chevron { color: var(--cp-text-soft); height: 20px; transition: transform .25s; width: 20px; }
+    .role-trigger[aria-expanded="true"] .chevron { color: var(--cp-accent); transform: rotate(180deg); }
+    .role-detail { display: grid; grid-template-columns: 110px minmax(0, 1fr); }
+    .role-detail-inner { grid-column: 2; max-width: 800px; padding: 0 0 28px; }
+    .role-detail p { color: var(--cp-text-muted); font-size: .9rem; margin-bottom: 14px; }
+    .role-detail ul { color: var(--cp-text-muted); font-size: .88rem; margin: 0; padding-left: 18px; }
+    .role-detail li + li { margin-top: 7px; }
+    .role-detail[hidden] { display: none; }
+
+    .recognition-grid { display: grid; gap: 16px; grid-template-columns: 1.1fr .9fr; }
+    .recognition-card { background: var(--cp-surface); border: 1px solid var(--cp-border); padding: 30px; }
+    .recognition-card h3 { font-size: 1.15rem; margin: 12px 0 18px; }
+    .credential-list { list-style: none; margin: 0; padding: 0; }
+    .credential-list li { border-top: 1px solid var(--cp-border); color: var(--cp-text-muted); font-size: .86rem; padding: 13px 0; }
+    .credential-list strong { color: var(--cp-text); display: block; }
+    .press-grid { display: grid; gap: 8px; grid-template-columns: repeat(2, 1fr); }
+    .press-item { background: var(--cp-accent-soft); color: var(--cp-text); font-size: .78rem; font-weight: 700; padding: 16px 12px; }
+    .education { color: var(--cp-text-muted); font-size: .84rem; line-height: 1.75; }
+
+    .contact { background: var(--cp-text); color: var(--cp-bg); overflow: hidden; position: relative; }
+    .contact::after { border: 1px solid var(--cp-border-strong); border-radius: 50%; bottom: -290px; content: ""; height: 570px; position: absolute; right: -110px; width: 570px; }
+    .contact-grid { align-items: end; display: grid; gap: 40px; grid-template-columns: 1fr auto; position: relative; z-index: 1; }
+    .contact h2 { max-width: 760px; }
+    .contact .lede { color: var(--cp-text-muted); }
+    .contact-actions { display: flex; flex-direction: column; gap: 10px; min-width: 235px; }
+    .contact-actions .button { width: 100%; }
+    .copy-note { color: var(--cp-text-muted); font-size: .74rem; margin: 8px 0 0; text-align: center; }
+    footer { border-top: 1px solid var(--cp-border-strong); color: var(--cp-text-muted); display: flex; font-size: .75rem; justify-content: space-between; margin-top: 68px; padding-top: 18px; position: relative; z-index: 1; }
+
+    @media (max-width: 800px) {
+      .shell { width: min(100% - 32px, 1180px); }
+      .section { padding: 78px 0; }
+      .nav-links { background: var(--cp-panel-strong); border-bottom: 1px solid var(--cp-border); display: none; flex-direction: column; gap: 0; left: 0; padding: 12px 16px 18px; position: absolute; right: 0; top: 72px; }
+      .nav-links.open { display: flex; }
+      .nav-link { padding: 11px 0; }
+      .nav-toggle { display: block; }
+      .hero { min-height: auto; padding: 72px 0 70px; }
+      .hero-grid, .approach-grid, .recognition-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: clamp(3rem, 15vw, 5rem); }
+      .signal-card { max-width: 460px; }
+      .metric-grid { grid-template-columns: repeat(2, 1fr); }
+      .metric { border-bottom: 1px solid var(--cp-border-strong); padding: 25px 16px; }
+      .metric:nth-child(2) { border-right: 0; }
+      .metric:nth-child(n + 3) { border-bottom: 0; }
+      .capability-grid { grid-template-columns: repeat(2, 1fr); }
+      .role-trigger { grid-template-columns: 82px 1fr auto; }
+      .role-detail { grid-template-columns: 82px minmax(0, 1fr); }
+      .press-grid { grid-template-columns: repeat(3, 1fr); }
+      .contact-actions { max-width: 340px; }
+    }
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 3.35rem; }
+      .capability-grid, .press-grid { grid-template-columns: 1fr; }
+      .role-trigger { gap: 10px; grid-template-columns: 1fr auto; }
+      .role-date { grid-column: 1 / -1; }
+      .role-detail { display: block; }
+      .role-detail-inner { padding-bottom: 25px; }
+      footer { align-items: start; flex-direction: column; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Raymond Collins home"><span class="brand-mark">RC</span><span>Raymond Collins</span></a>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="nav-links">
+        <a class="nav-link active" href="#approach">Approach</a>
+        <a class="nav-link" href="#capabilities">Capabilities</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#recognition">Recognition</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">Enterprise AI / Cape Town, South Africa</div>
+          <h1>AI that moves from <span class="accent">possibility</span> to business performance.</h1>
+          <p class="hero-copy">I design commercially grounded enterprise AI solutions across Microsoft 365 Copilot, Copilot Studio, Azure AI and agentic workflow automation — turning complex business priorities into scalable outcomes.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Start a conversation <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#experience">Explore my work <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="availability"><i></i> Open to enterprise AI conversations</div>
+        </div>
+        <aside class="signal-card" aria-label="What I bring">
+          <div class="eyebrow">The operating model</div>
+          <h2>Architecture that earns adoption.</h2>
+          <div class="signal-row">
+            <svg class="signal-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 5-7"/></svg>
+            <div><strong>Commercially grounded</strong><span>Value cases and models built into the design.</span></div>
+          </div>
+          <div class="signal-row">
+            <svg class="signal-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg>
+            <div><strong>Agentic by design</strong><span>Practical workflows, not abstract AI experiments.</span></div>
+          </div>
+          <div class="signal-row">
+            <svg class="signal-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 20V10m7 10V4m7 16v-7"/></svg>
+            <div><strong>Adoption-led</strong><span>Capability that lands with people and scales.</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Impact snapshot">
+      <div class="shell metric-grid">
+        <div class="metric"><div class="metric-value" data-target="1100" data-suffix="+">0</div><div class="metric-label">Copilot seats deployed</div></div>
+        <div class="metric"><div class="metric-value" data-target="100" data-suffix="+">0</div><div class="metric-label">Clients enabled</div></div>
+        <div class="metric"><div class="metric-value" data-target="13" data-prefix="R" data-suffix="M+">0</div><div class="metric-label">Revenue influenced</div></div>
+        <div class="metric"><div class="metric-value" data-target="80" data-suffix="+">0</div><div class="metric-label">Executive workshops & POCs</div></div>
+      </div>
+    </section>
+
+    <section class="section approach" id="approach">
+      <div class="shell approach-grid">
+        <div class="section-heading">
+          <div class="eyebrow">How I work</div>
+          <h2>Enterprise transformation needs more than a great demo.</h2>
+          <p class="lede">I align the technical opportunity with the commercial case, operating reality and adoption path from the first conversation.</p>
+        </div>
+        <div>
+          <div class="principles">
+            <article class="principle"><span class="principle-num">01</span><div><h3>Frame the opportunity</h3><p>Translate ambiguous executive priorities into focused, high-value use cases and a credible success measure.</p></div></article>
+            <article class="principle"><span class="principle-num">02</span><div><h3>Design the right journey</h3><p>Shape phased roadmaps across Copilot, agents, automation and change — aligned to organisational maturity.</p></div></article>
+            <article class="principle"><span class="principle-num">03</span><div><h3>Make value executable</h3><p>Connect licensing, solution architecture, commercial models, POCs and enablement into one customer-ready proposition.</p></div></article>
+          </div>
+          <div class="statement"><p>“The real work is not introducing AI. It is designing the conditions for it to become part of how the organisation performs.”</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="capabilities">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="eyebrow">Capability map</div>
+          <h2>Architecture, advisory and activation — connected.</h2>
+          <p class="lede">Select a lens to explore how each capability contributes to a practical enterprise AI journey.</p>
+        </div>
+        <div class="capability-toolbar">
+          <div class="filter-set" role="group" aria-label="Filter capabilities">
+            <button class="filter selected" type="button" data-filter="all">All capabilities</button>
+            <button class="filter" type="button" data-filter="strategy">Strategy</button>
+            <button class="filter" type="button" data-filter="platform">Platform</button>
+            <button class="filter" type="button" data-filter="adoption">Adoption</button>
+          </div>
+          <span class="result-count" aria-live="polite">6 capabilities</span>
+        </div>
+        <div class="capability-grid">
+          <article class="capability-card" data-category="strategy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="m9 12 2 2 4-5"/></svg><h3>Enterprise AI Strategy</h3><p>Executive advisory, prioritisation, value cases and phased roadmaps that make the opportunity actionable.</p></article>
+          <article class="capability-card" data-category="platform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3 4 7v10l8 4 8-4V7l-8-4Z"/><path d="m4 7 8 4 8-4M12 11v10"/></svg><h3>Copilot & Agent Architecture</h3><p>Microsoft 365 Copilot, Copilot Studio, Azure AI and agentic workflow solutions designed for enterprise reality.</p></article>
+          <article class="capability-card" data-category="strategy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V5m0 14h16"/><path d="M7 15h3v-4h3V7h4"/></svg><h3>Commercial Enablement</h3><p>Licensing strategy and customer-ready commercial models aligned to outcomes, maturity and sustained value.</p></article>
+          <article class="capability-card" data-category="adoption"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><h3>Adoption & Change</h3><p>Workforce enablement programmes that help teams build confidence, establish new habits and realise value.</p></article>
+          <article class="capability-card" data-category="platform"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 17h7M17 14v7"/></svg><h3>POCs & Workflow Design</h3><p>Executive workshops, proof-of-concepts and live demonstrations that turn interest into a committed path forward.</p></article>
+          <article class="capability-card" data-category="adoption"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 20V10M18 20V4M6 20v-6"/><path d="M3 20h18"/></svg><h3>Business Transformation</h3><p>Process transformation grounded in stakeholder alignment, commercial discipline and the future of work.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section experience" id="experience">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="eyebrow">Professional experience</div>
+          <h2>A commercial operator’s path into enterprise AI.</h2>
+          <p class="lede">25+ years across general management, sales, operations and production inform a practical approach to solution architecture.</p>
+        </div>
+        <div class="timeline">
+          <article class="role">
+            <button class="role-trigger" type="button" aria-expanded="true" aria-controls="role-ai"><span class="role-date">2023 — Present</span><span class="role-title">AI Business Solutions Architect<span class="role-company">Braintree by Vox — Microsoft Cloud Solutions Partner</span></span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="role-detail" id="role-ai"><div class="role-detail-inner"><p>Enterprise AI advisory, solution architecture, licensing strategy, proof-of-concepts, workshops and adoption programmes across Microsoft Copilot and agentic AI.</p><ul><li>Architected phased Copilot and agentic-automation solutions for enterprise clients, including the Spirit Group.</li><li>Led enablement, licensing and delivery across 100+ clients and 1,100+ deployed seats.</li><li>Delivered 80+ executive briefings, workshops and POCs, including a Copilot Studio POC across approximately 700 seats.</li></ul></div></div>
+          </article>
+          <article class="role">
+            <button class="role-trigger" type="button" aria-expanded="false" aria-controls="role-vfx"><span class="role-date">2006 — 2023</span><span class="role-title">General Manager — VFX & Content Production<span class="role-company">Inspired Minority Pictures & LightSeed Creations</span></span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="role-detail" id="role-vfx" hidden><div class="role-detail-inner"><p>Full commercial and operational ownership across contracts, finance, hiring, budgeting, risk and production — with executive VFX and content leadership for broadcast and commercial work.</p><ul><li>Executive VFX Producer on productions including A&E History Channel’s <em>I Was There</em>, KFC “Gold Rush” and M-Net’s <em>The Fix</em>.</li><li>Studio VFX contributions to titles including <em>Roots</em>, <em>Eye in the Sky</em>, <em>Capone</em> and <em>Red Sea Diving Resort</em>.</li><li>15+ years in story development and script editing, including a commission to adapt Octavia E. Butler’s <em>Kindred</em>.</li></ul></div></div>
+          </article>
+          <article class="role">
+            <button class="role-trigger" type="button" aria-expanded="false" aria-controls="role-commercial"><span class="role-date">1994 — 2018</span><span class="role-title">Commercial & General Management<span class="role-company">South Africa & Ireland</span></span><svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="role-detail" id="role-commercial" hidden><div class="role-detail-inner"><p>Nearly three decades of leadership across retail, sales, operations, production and general management underpin a deeply commercial approach to AI solution design.</p><ul><li>Owner & Executive Oversight — Arlex Fragrances, Cape Town & Dublin.</li><li>Retail Store Manager — Sony, Dublin; General Manager — Clinekor, Johannesburg.</li><li>Sales & Operations Manager — Passionade Beverages; Production Manager — KSI Ilios Oil; Technical Sales Consultant — Sesco Security Wholesalers.</li></ul></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recognition">
+      <div class="shell">
+        <div class="section-heading">
+          <div class="eyebrow">Recognition & perspective</div>
+          <h2>Credibility in the room and in the market.</h2>
+        </div>
+        <div class="recognition-grid">
+          <article class="recognition-card">
+            <div class="eyebrow">Microsoft credentials</div>
+            <h3>Built for the Copilot and agents era.</h3>
+            <ul class="credential-list">
+              <li><strong>Microsoft Copilot Sales Champion — FY24</strong>Credly, May 2024</li>
+              <li><strong>Copilot for Microsoft 365 Technical Champion</strong>Credly, August 2024</li>
+              <li><strong>M365 Copilot + Agents</strong>Microsoft, December 2025</li>
+              <li><strong>Microsoft 365 SMB Masters Sales Professional</strong>Microsoft, November 2023</li>
+            </ul>
+          </article>
+          <article class="recognition-card">
+            <div class="eyebrow">Thought leadership</div>
+            <h3>A recognised enterprise-AI voice.</h3>
+            <div class="press-grid">
+              <div class="press-item">10+ published essays</div><div class="press-item">Business Day TV</div><div class="press-item">Power FM</div><div class="press-item">CapeTalk</div><div class="press-item">Techfest</div><div class="press-item">COVER Podcast</div>
+            </div>
+            <h3 style="margin-top:28px">Education</h3>
+            <p class="education">Damelin — Marketing (1994–1997)<br>Institute of Marketing Management — Business Communication<br>National Film & Video Foundation — Story & Script Development / Editing</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="shell">
+        <div class="contact-grid">
+          <div>
+            <div class="eyebrow">Let’s build the next step</div>
+            <h2>Move your AI ambition into an executable advantage.</h2>
+            <p class="lede">For enterprise AI strategy, Copilot enablement, agentic workflow design or an executive conversation, get in touch.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="button button-primary" href="mailto:raymondcollins12r@gmail.com">Email Raymond <span aria-hidden="true">↗</span></a>
+            <button class="button button-secondary" type="button" data-copy-email data-email="raymondcollins12r@gmail.com">Copy email address <span aria-hidden="true">⧉</span></button>
+            <p class="copy-note" aria-live="polite"></p>
+          </div>
+        </div>
+        <footer><span>© 2026 Raymond Collins</span><span>Cape Town, South Africa · Enterprise AI Architecture</span></footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    navToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", open);
+    });
+    navLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }));
+
+    document.querySelectorAll(".role-trigger").forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        const detail = document.getElementById(trigger.getAttribute("aria-controls"));
+        const expanded = trigger.getAttribute("aria-expanded") === "true";
+        document.querySelectorAll(".role-trigger").forEach((item) => item.setAttribute("aria-expanded", "false"));
+        document.querySelectorAll(".role-detail").forEach((item) => { item.hidden = true; });
+        if (!expanded) {
+          trigger.setAttribute("aria-expanded", "true");
+          detail.hidden = false;
+        }
+      });
+    });
+
+    const filters = document.querySelectorAll(".filter");
+    const cards = document.querySelectorAll(".capability-card");
+    const resultCount = document.querySelector(".result-count");
+    filters.forEach((filter) => filter.addEventListener("click", () => {
+      const choice = filter.dataset.filter;
+      filters.forEach((item) => item.classList.remove("selected"));
+      filter.classList.add("selected");
+      let visible = 0;
+      cards.forEach((card) => {
+        const show = choice === "all" || card.dataset.category === choice;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      resultCount.textContent = `${visible} ${visible === 1 ? "capability" : "capabilities"}`;
+    }));
+
+    const metricSection = document.querySelector(".metrics");
+    let metricsStarted = false;
+    const formatMetric = (number, prefix, suffix) => `${prefix || ""}${number.toLocaleString()}${suffix || ""}`;
+    const countMetrics = () => {
+      if (metricsStarted) return;
+      metricsStarted = true;
+      document.querySelectorAll(".metric-value").forEach((metric) => {
+        const target = Number(metric.dataset.target);
+        const prefix = metric.dataset.prefix;
+        const suffix = metric.dataset.suffix;
+        const start = performance.now();
+        const duration = 1100;
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          metric.textContent = formatMetric(Math.round(target * eased), prefix, suffix);
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    };
+    new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) countMetrics();
+    }, { threshold: .35 }).observe(metricSection);
+
+    const sections = [...document.querySelectorAll("main section[id]")];
+    const sectionLinks = [...document.querySelectorAll(".nav-link")];
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) sectionLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
+      });
+    }, { rootMargin: "-35% 0px -55% 0px" });
+    sections.forEach((section) => spy.observe(section));
+
+    const copyButton = document.querySelector("[data-copy-email]");
+    const copyNote = document.querySelector(".copy-note");
+    copyButton.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(copyButton.dataset.email);
+        copyNote.textContent = "Email address copied.";
+      } catch {
+        copyNote.textContent = copyButton.dataset.email;
+      }
+    });
+  </script>
+</body>
+</html>
